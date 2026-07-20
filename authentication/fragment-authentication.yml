@@ -1,0 +1,37 @@
+generated: '2026-07-19'
+method: searched
+source: https://fragment.dev/docs/authenticate-with-the-api
+docs: https://fragment.dev/api-reference/ledger-overview
+summary:
+  types: [oauth2]
+  oauth2_flows: [clientCredentials]
+  token_type: Bearer
+  token_ttl_seconds: 3600
+description: >-
+  Fragment authenticates API requests with the OAuth2 client-credentials flow.
+  You create an API client (client_id + client_secret) in the Fragment
+  dashboard, exchange those credentials for a short-lived Bearer access token
+  at a region-specific token endpoint, and send it as `Authorization: Bearer
+  <access_token>` on GraphQL requests. Access tokens expire after one hour.
+  Identity is brokered through Auth0 (idp.fragment.dev) with the API audience
+  https://api-global.fragment.dev.
+schemes:
+- name: OAuth2ClientCredentials
+  type: oauth2
+  flow: clientCredentials
+  token_url_pattern: https://auth.<region>.fragment.dev/oauth2/token
+  audience: https://api-global.fragment.dev
+  idp: idp.fragment.dev
+  header: 'Authorization: Bearer <access_token>'
+  scope_param: true
+  sources: [https://fragment.dev/api-reference/ledger-overview]
+token_endpoints:
+- https://auth.ap-southeast-2.fragment.dev/oauth2/token
+- https://auth.us-east-1.fragment.dev/oauth2/token
+- https://auth.us-east-2.fragment.dev/oauth2/token
+- https://auth.us-west-2.fragment.dev/oauth2/token
+- https://auth.eu-west-1.fragment.dev/oauth2/token
+notes:
+- API clients (client_id/client_secret) are provisioned per workspace in the dashboard.
+- Roles & Permissions (Admin / Reader) can be assigned to API clients (changelog, June 2026).
+- No scope reference page was published at the time of capture; scopes are requested via the OAuth `scope` parameter.
