@@ -1,0 +1,39 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/fragment-dev
+packages:
+- language: typescript
+  registry: npm
+  name: "@fragment-dev/node-client"
+  url: https://www.npmjs.com/package/@fragment-dev/node-client
+  install: npm install @fragment-dev/node-client
+  version: 2.0.0
+  license: Apache-2.0
+  official: true
+  note: TypeScript/Node client; typesafe SDK generated from your Fragment schema.
+- language: shell
+  registry: npm
+  name: "@fragment-dev/cli"
+  url: https://www.npmjs.com/package/@fragment-dev/cli
+  install: npm install -g @fragment-dev/cli
+  license: MIT
+  official: true
+  note: FRAGMENT CLI (schema codegen, gen-graphql). Also installable via Homebrew tap fragment-dev/homebrew-tap.
+- language: go
+  registry: pkg.go.dev
+  name: github.com/fragment-dev/fragment-go
+  url: https://pkg.go.dev/github.com/fragment-dev/fragment-go
+  install: go get github.com/fragment-dev/fragment-go
+  official: true
+- language: ruby
+  registry: github
+  name: fragment-ruby
+  url: https://github.com/fragment-dev/fragment-ruby
+  official: true
+  note: First-party Ruby client published in the fragment-dev GitHub org.
+- language: python
+  registry: github
+  name: fragment-python
+  url: https://github.com/fragment-dev/fragment-python
+  official: true
+  note: First-party Python client published in the fragment-dev GitHub org.

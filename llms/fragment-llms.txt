@@ -1,0 +1,33 @@
+# Fragment
+
+> Fragment is the ledger API for engineers who move money — a double-entry accounting engine ("the database for money"). Model any funds flow as a declarative, typed chart-of-accounts schema, post balanced idempotent ledger entries over GraphQL, and read real-time, historical, period, and strongly-consistent balances across multi-currency accounts. OAuth2 client-credentials auth, typed GraphQL union errors, cursor pagination, AWS regional deployments. Used by Bill, Ramp, Pleo, AtoB, Basic Capital, and Nala; backed by General Catalyst.
+
+## API
+- [Fragment Ledger API (GraphQL)](https://fragment.dev/api-reference/ledger-overview): GraphQL ledger API at https://api.fragment.dev
+- [GraphQL schema (SDL)](https://api.fragment.dev/schema.graphql): full published schema
+
+## Specs
+- [GraphQL SDL](graphql/fragment-schema.graphql)
+- [Authentication profile](authentication/fragment-authentication.yml)
+- [API conventions (idempotency, pagination, errors)](conventions/fragment-conventions.yml)
+- [Error model](errors/fragment-error-codes.yml)
+- [Data model / ERD](data-model/fragment-data-model.yml)
+- [Conformance](conformance/fragment-conformance.yml)
+- [MCP tool candidates](mcp/fragment-mcp.yml)
+- [Agent skills](skills/_index.yml)
+
+## Docs
+- [Documentation](https://fragment.dev/docs)
+- [Quickstart](https://fragment.dev/docs/quickstart)
+- [API Reference](https://fragment.dev/api-reference/ledger-overview)
+- [Changelog](https://fragment.dev/changelog)
+- [Security (SOC 2 Type II)](https://fragment.dev/security)
+- [Status](https://status.fragment.dev)
+
+## SDKs
+- [TypeScript / Node client (npm)](https://www.npmjs.com/package/@fragment-dev/node-client)
+- [CLI (npm)](https://www.npmjs.com/package/@fragment-dev/cli)
+- [Go client](https://pkg.go.dev/github.com/fragment-dev/fragment-go)
+- [Ruby client](https://github.com/fragment-dev/fragment-ruby)
+- [Python client](https://github.com/fragment-dev/fragment-python)
+- [GitHub organization](https://github.com/fragment-dev)

@@ -1,22 +1,158 @@
 aid: fragment
 name: Fragment
-description: Fragment is a company surfaced as a portfolio company of general-catalyst and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Fragment is the ledger API for engineers who move money. It provides a
+  double-entry accounting engine — "the database for money" — that lets
+  developers model any funds flow as declarative, typed schemas and post
+  balanced, immutable ledger entries through a GraphQL API. Fragment generates
+  a typesafe SDK from your chart-of-accounts schema, tracks real-time,
+  historical, period, and strongly-consistent balances across multi-currency
+  and custom-currency accounts, and reconciles internal ledgers against
+  external systems (Stripe, Increase, Unit, banks) via linked and external
+  accounts. Every write mutation is idempotent (per-Ledger idempotency keys),
+  responses are GraphQL union types with typed errors, list queries are
+  cursor-paginated, and the API is deployed across AWS regions. Fragment is
+  used by companies including Bill, Ramp, Pleo, AtoB, Basic Capital, and Nala,
+  and is backed by General Catalyst.
 url: https://raw.githubusercontent.com/api-evangelist/fragment/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - general-catalyst
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
+image: https://fragment.dev/favicon.ico
 tags:
 - Company
-apis: []
+- Ledger
+- Accounting
+- Payments
+- Fintech
+- Double-Entry
+- Money Movement
+- GraphQL
+- Financial Infrastructure
+- Reconciliation
+apis:
+- name: Fragment Ledger API
+  description: >-
+    Fragment's GraphQL Ledger API. Store a double-entry chart-of-accounts
+    schema, create ledgers, post idempotent ledger entries and lines, read
+    aggregated / historical / period / strongly-consistent balances, reverse
+    and migrate entries, group entries, and reconcile against external
+    accounts and transactions (links). OAuth2 client-credentials auth, typed
+    union responses, and cursor pagination.
+  humanURL: https://fragment.dev/docs
+  baseURL: https://api.fragment.dev
+  tags:
+  - Ledger
+  - Accounting
+  - GraphQL
+  - Payments
+  properties:
+  - type: GraphQL
+    url: graphql/fragment-schema.graphql
+  - type: APIReference
+    url: https://fragment.dev/api-reference/ledger-overview
+  - type: Authentication
+    url: authentication/fragment-authentication.yml
+  - type: Conventions
+    url: conventions/fragment-conventions.yml
+  - type: Idempotency
+    url: conventions/fragment-conventions.yml
+  - type: ErrorCatalog
+    url: errors/fragment-error-codes.yml
+  - type: DataModel
+    url: data-model/fragment-data-model.yml
+  - type: Conformance
+    url: conformance/fragment-conformance.yml
+  - type: MCPServer
+    url: mcp/fragment-mcp.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: DeveloperPortal
+  url: https://fragment.dev/docs
+- type: Documentation
+  url: https://fragment.dev/docs
+- type: APIReference
+  url: https://fragment.dev/api-reference/ledger-overview
+- type: GettingStarted
+  url: https://fragment.dev/docs/quickstart
+- type: Blog
+  url: https://fragment.dev/blog
+- type: ChangeLog
+  url: changelog/fragment-changelog.yml
+- type: GitHubOrganization
+  url: https://github.com/fragment-dev
+- type: StatusPage
+  url: https://status.fragment.dev
+- type: SignUp
+  url: https://fragment.dev/get-access
+- type: Login
+  url: https://dashboard.fragment.dev/login
+- type: Support
+  url: https://fragment.dev/security
+- type: TermsOfService
+  url: https://fragment.dev/legal
+- type: PrivacyPolicy
+  url: https://fragment.dev/legal
+- type: Security
+  url: https://fragment.dev/security
+- type: Compliance
+  url: https://fragment.dev/security
+- type: TrustCenter
+  url: security/fragment-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/fragment-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/fragment-domain-security.yml
+- type: Packages
+  url: packages/fragment-packages.yml
+- type: SDKs
+  url: packages/fragment-packages.yml
+- type: CLI
+  url: cli/fragment-cli.yml
+- type: Authentication
+  url: authentication/fragment-authentication.yml
+- type: Conventions
+  url: conventions/fragment-conventions.yml
+- type: Idempotency
+  url: conventions/fragment-conventions.yml
+- type: ErrorCatalog
+  url: errors/fragment-error-codes.yml
+- type: Lifecycle
+  url: lifecycle/fragment-lifecycle.yml
+- type: Conformance
+  url: conformance/fragment-conformance.yml
+- type: DataModel
+  url: data-model/fragment-data-model.yml
+- type: MCPServer
+  url: mcp/fragment-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/fragment-llms.txt
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

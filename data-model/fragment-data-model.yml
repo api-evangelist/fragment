@@ -1,0 +1,79 @@
+generated: '2026-07-19'
+method: derived
+source: graphql/fragment-schema.graphql
+docs: https://fragment.dev/docs/design-your-ledger
+description: >-
+  Entity-relationship graph derived from the Fragment GraphQL SDL. A Workspace
+  holds Schemas; a Schema (versioned) defines the chart of accounts a Ledger is
+  created from; a Ledger holds Accounts and Entries; each Entry posts balanced
+  Lines against Accounts; Links reconcile external Accounts and Txs into the
+  ledger.
+entities:
+- name: Workspace
+  role: top-level tenant boundary
+- name: Schema
+  versioned_by: SchemaVersion
+  role: declarative double-entry chart-of-accounts definition
+- name: Ledger
+  role: an instance created from a Schema; holds accounts and entries
+- name: LedgerAccount
+  role: an account in the chart of accounts (multi-currency, custom currencies)
+- name: LedgerEntry
+  role: an immutable, balanced posting; reversible; tagged
+- name: LedgerLine
+  role: a single debit/credit line within an entry; tagged
+- name: LedgerEntryGroup
+  role: grouping of entries with aggregate group balances
+- name: Tx
+  role: an external transaction ingested for reconciliation
+- name: CustomLink
+  variants: [StripeLink, IncreaseLink, UnitLink]
+  role: connection to an external system for reconciliation
+- name: ExternalAccount
+  role: an account in a linked external system
+- name: Currency
+  variants: [CurrencyCode, CustomCurrency]
+- name: HistoricalBalance
+  role: point-in-time / period balance snapshot
+relationships:
+- from: Workspace
+  to: Schema
+  kind: has_many
+- from: Schema
+  to: SchemaVersion
+  kind: has_many
+- from: Ledger
+  to: Schema
+  kind: belongs_to
+  via: schema
+- from: Ledger
+  to: LedgerAccount
+  kind: has_many
+- from: Ledger
+  to: LedgerEntry
+  kind: has_many
+- from: LedgerEntry
+  to: LedgerLine
+  kind: has_many
+- from: LedgerLine
+  to: LedgerAccount
+  kind: belongs_to
+  via: account
+- from: LedgerEntry
+  to: LedgerEntryGroup
+  kind: belongs_to
+  via: group
+- from: LedgerAccount
+  to: Currency
+  kind: has_many
+- from: CustomLink
+  to: ExternalAccount
+  kind: has_many
+- from: CustomLink
+  to: Tx
+  kind: has_many
+- from: LedgerAccount
+  to: HistoricalBalance
+  kind: has_many
+notes:
+- id_prefixes: not published in the object reference at capture time.

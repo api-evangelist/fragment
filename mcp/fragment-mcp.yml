@@ -1,0 +1,42 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: graphql/fragment-schema.graphql
+note: >-
+  Fragment markets MCP-style AI-agent access to the ledger, but no official
+  hosted/remote MCP server endpoint or MCP package was published on the docs,
+  npm (@modelcontextprotocol), or the fragment-dev GitHub org at capture time.
+  The tool list below is a CANDIDATE mapping of Fragment GraphQL operations to
+  MCP tools — a governance starting point, not a provider claim.
+server:
+  name: fragment
+  transport: http
+  url: null
+tools:
+- name: add_ledger_entry
+  description: Post a balanced double-entry ledger entry (idempotent via ik).
+  source_operation: graphql/fragment-schema.graphql#addLedgerEntry
+- name: reverse_ledger_entry
+  description: Reverse a previously posted ledger entry.
+  source_operation: graphql/fragment-schema.graphql#reverseLedgerEntry
+- name: get_ledger_account
+  description: Read a ledger account and its balances.
+  source_operation: graphql/fragment-schema.graphql#ledgerAccount
+- name: get_ledger_entry
+  description: Read a single ledger entry.
+  source_operation: graphql/fragment-schema.graphql#ledgerEntry
+- name: list_ledger_lines
+  description: List ledger lines with filters and cursor pagination.
+  source_operation: graphql/fragment-schema.graphql#ledgerLine
+- name: create_ledger
+  description: Create a ledger from a stored schema.
+  source_operation: graphql/fragment-schema.graphql#createLedger
+- name: store_schema
+  description: Store a double-entry chart-of-accounts schema.
+  source_operation: graphql/fragment-schema.graphql#storeSchema
+- name: reconcile_tx
+  description: Reconcile an external transaction against the ledger.
+  source_operation: graphql/fragment-schema.graphql#reconcileTx
+- name: get_tx
+  description: Read an external transaction.
+  source_operation: graphql/fragment-schema.graphql#tx

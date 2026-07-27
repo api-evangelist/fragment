@@ -1,0 +1,58 @@
+generated: '2026-07-19'
+method: searched
+source: https://fragment.dev/api-reference/ledger-overview
+docs: https://fragment.dev/docs
+description: >-
+  Cross-cutting request/response semantics for the Fragment Ledger GraphQL API.
+authentication:
+  style: oauth2-client-credentials
+  header: 'Authorization: Bearer <access_token>'
+  ref: authentication/fragment-authentication.yml
+idempotency:
+  supported: true
+  mechanism: idempotency-key
+  param: ik
+  scope: per-ledger
+  applies_to: all write mutations
+  replay_signal: 'isIkReplay: true (returns the original response on replay)'
+  notes: >-
+    Every write mutation in Fragment accepts a unique `ik` (idempotency key)
+    argument. Keys are scoped per-Ledger. On a duplicate request Fragment
+    returns the previously computed result with `isIkReplay: true` rather than
+    re-applying the entry.
+pagination:
+  style: cursor
+  pattern: GraphQL Relay-style connections
+  response_fields: [edges, nodes, pageInfo]
+  page_info_fields: [hasNextPage, hasPreviousPage, startCursor, endCursor]
+  arguments: [first, after, last, before]
+  filtering: >-
+    List queries accept typed filters (e.g. DateFilter with `within` relative
+    ranges, `pathIn` for ledger lines, tag/metadata filters).
+error_envelope:
+  transport: GraphQL
+  style: typed union responses
+  pattern: >-
+    Mutations return a union of a success result and typed error members
+    (BadRequestError, InternalError; NotFoundError on reads). Inspect the
+    `__typename` to branch. Top-level transport/validation failures surface in
+    the GraphQL `errors` array.
+  fields: [code, message, retryable]
+  ref: errors/fragment-error-codes.yml
+  retry_guidance: >-
+    Retry HTTP 429 and 5XX, then handle 4XX, then check the GraphQL `errors`
+    key, then branch on the response `__typename`. `retryable` on typed errors
+    signals whether a retry can succeed.
+versioning:
+  scheme: date-based (year/month changelog); GraphQL schema is additive/non-breaking
+  ref: changelog/fragment-changelog.yml
+regions:
+  model: per-region deployment (data residency); pick the regional API + auth host
+  public: [ap-southeast-2, us-east-1, us-east-2, us-west-2, eu-west-1]
+  api_host: https://api.fragment.dev
+  global_api: https://api-global.fragment.dev
+  schema_sdl: https://api.fragment.dev/schema.graphql
+metadata:
+  tags: Entry and line tags store arbitrary key/value metadata on entries and lines; queryable/filterable.
+rate_limits:
+  signaling: HTTP 429 on throttle (retryable); no published numeric quota.

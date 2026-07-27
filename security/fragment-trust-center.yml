@@ -1,0 +1,19 @@
+generated: '2026-07-19'
+method: searched
+probe: false
+source: https://fragment.dev/security
+url: https://fragment.dev/security
+trust_profile: https://app.vanta.com
+certifications:
+- SOC 2 Type II
+posture:
+- Policies covering the full SDLC and operations.
+- Role-based access control with granular permissions.
+- Encryption at rest across networks, cloud storage, databases, and backups.
+- Continuous vulnerability scanning and supply-chain monitoring.
+- Real-time encrypted backup and disaster recovery.
+evidence:
+- source: https://fragment.dev/security
+  keywords: [soc 2 type ii, vanta, encryption at rest, vulnerability scanning]
+notes:
+- Trust profile hosted on Vanta (app.vanta.com); ISO 27001/PCI/HIPAA not claimed on the public security page.

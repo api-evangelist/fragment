@@ -1,0 +1,17 @@
+generated: '2026-07-19'
+method: generated
+source: graphql/fragment-schema.graphql
+api: graphql/fragment-schema.graphql
+skills:
+- file: fragment-post-ledger-entry.md
+  name: Post a balanced, idempotent ledger entry
+  api: graphql/fragment-schema.graphql
+  operations: [storeSchema, createLedger, addLedgerEntry, ledgerAccount]
+- file: fragment-reverse-and-reconcile.md
+  name: Reverse an entry and reconcile an external transaction
+  api: graphql/fragment-schema.graphql
+  operations: [reverseLedgerEntry, reconcileTx, tx]
+- file: fragment-read-balances.md
+  name: Read account, historical, and period balances
+  api: graphql/fragment-schema.graphql
+  operations: [ledgerAccount, ledgerLine, ledgerEntryHistory]

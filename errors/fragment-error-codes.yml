@@ -1,0 +1,54 @@
+generated: '2026-07-19'
+method: derived
+source: graphql/fragment-schema.graphql
+docs: https://fragment.dev/api-reference/ledger-overview
+format: graphql-typed-union
+description: >-
+  Fragment does not use RFC 9457 problem+json; it is a GraphQL API whose
+  mutations return union types of a success result and typed error members.
+  Errors carry a machine-readable `code` (free-form string, e.g.
+  `ledger_not_found`), a human `message`, and a `retryable` boolean. Reads may
+  return NotFoundError. Transport/validation failures appear in the top-level
+  GraphQL `errors` array with standard HTTP status semantics (429/5XX
+  retryable).
+envelope:
+  transport: GraphQL
+  branch_on: __typename
+  error_interface: Error
+error_types:
+- type: BadRequestError
+  http_equivalent: 400
+  fields: [code, message, retryable]
+  meaning: Request has missing or incorrect data.
+  example_code: ledger_not_found
+- type: NotFoundError
+  http_equivalent: 404
+  meaning: The requested resource does not exist.
+- type: InternalError
+  http_equivalent: 500
+  meaning: Unexpected server-side error.
+  retryable: true
+response_unions:
+- AddLedgerEntryResponse
+- CreateCustomCurrencyResponse
+- CreateCustomLinkResponse
+- CreateLedgerAccountResponse
+- CreateLedgerAccountsResponse
+- CreateLedgerResponse
+- DeleteCustomTxsResponse
+- DeleteLedgerResponse
+- DeleteSchemaResponse
+- MigrateLedgerEntryResponse
+- ReconcileTxResponse
+- ReverseLedgerEntryResponse
+- StoreSchemaResponse
+- SyncCustomAccountsResponse
+- SyncCustomTxsResponse
+- UpdateLedgerAccountResponse
+- UpdateLedgerEntryResponse
+- UpdateLedgerResponse
+handling_order:
+- Retry HTTP 429 and 5XX (transport).
+- Handle other 4XX HTTP errors.
+- Check the GraphQL top-level `errors` array.
+- Branch on the response `__typename`; use `retryable` on typed errors.

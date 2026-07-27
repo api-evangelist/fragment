@@ -1,0 +1,30 @@
+generated: '2026-07-19'
+method: derived
+source: graphql/fragment-schema.graphql
+docs: https://fragment.dev/security
+standards:
+- id: graphql
+  conforms: true
+  evidence: Published GraphQL SDL at https://api.fragment.dev/schema.graphql (Query + Mutation, typed unions).
+- id: oauth2-client-credentials
+  conforms: true
+  evidence: OAuth2 client-credentials token flow at region auth.<region>.fragment.dev/oauth2/token.
+- id: idempotency
+  conforms: true
+  evidence: All write mutations accept a per-Ledger idempotency key (ik) and return isIkReplay on replay.
+- id: cursor-pagination
+  conforms: true
+  evidence: Relay-style connection types with PageInfo across ~20 list connections.
+- id: double-entry-accounting
+  conforms: true
+  evidence: Schema models a double-entry chart of accounts; entries post balanced ledger lines.
+- id: soc2-type-ii
+  conforms: true
+  evidence: SOC 2 Type II stated on https://fragment.dev/security; Vanta trust profile.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors are GraphQL typed unions, not application/problem+json.
+- id: fhir-r4
+  conforms: false
+- id: fapi
+  conforms: false

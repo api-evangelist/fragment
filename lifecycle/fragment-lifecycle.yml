@@ -1,0 +1,25 @@
+generated: '2026-07-19'
+method: searched
+source: https://status.fragment.dev
+versioning:
+  scheme: date-based changelog (year/month); GraphQL schema evolves additively
+  docs: https://fragment.dev/changelog
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No formal deprecation/sunset policy published at capture time.
+sla:
+  url: https://status.fragment.dev
+  uptime_observed: '100% (Apr-Jul 2026 window shown)'
+  uptime_target: null
+status_page: https://status.fragment.dev
+status_provider: incident.io
+status_components:
+- Dashboard
+- 'API: ap-southeast-2'
+- 'API: us-east-1'
+- 'API: us-east-2'
+- 'API: us-west-2'
+- 'API: eu-west-1'
+- 'API: private-* (dedicated deployments)'
+deprecated_operations: []

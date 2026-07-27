@@ -1,0 +1,24 @@
+generated: '2026-07-19'
+method: searched
+source: https://www.npmjs.com/package/@fragment-dev/cli
+name: FRAGMENT CLI
+binary: fragment
+package: "@fragment-dev/cli"
+install:
+- method: npm
+  command: npm install -g @fragment-dev/cli
+- method: homebrew
+  command: brew install fragment-dev/homebrew-tap/fragment
+  tap: https://github.com/fragment-dev/homebrew-tap
+purpose: >-
+  Design-time tooling for the schema-driven workflow: generate GraphQL
+  operations and a typesafe client from your Fragment chart-of-accounts schema,
+  wired into CI so the SDK stays in sync with the schema.
+commands:
+- name: gen-graphql
+  summary: Generate schema-specific GraphQL queries/mutations from your Fragment schema.
+  flags:
+  - '--include-runtime-args'
+notes:
+- Codegen pairs with the @fragment-dev/node-client TypeScript client.
+- CLI versions are date-stamped (e.g. 2026.7.17-7).

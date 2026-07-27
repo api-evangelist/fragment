@@ -1,0 +1,28 @@
+generated: '2026-07-19'
+method: searched
+source: https://fragment.dev/changelog
+scheme: date-based (year/month)
+current_period: '2026'
+entries:
+- date: '2026-06'
+  highlights:
+  - Roles & Permissions — assign Admin or Reader roles to workspace members and API clients.
+  - Added DateFilter.within for relative date ranges.
+  breaking: false
+- date: '2026-05'
+  highlights:
+  - Search entries by tag / metadata.
+  - Line tags shown in entry details.
+  - Added pathIn filter for Ledger Lines.
+  - Improved null handling in filters.
+  breaking: false
+- date: '2026-04'
+  highlights:
+  - 'Strongly Consistent Parent Balances (totalBalanceUpdates: strong).'
+  - Performance improvements and schema validation enhancements.
+  breaking: false
+- date: '2026-03'
+  highlights:
+  - Line Tags — tag individual Ledger Lines within entries.
+  - Expanded Ledger Line querying and Dashboard entry posting.
+  breaking: false
