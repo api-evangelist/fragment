@@ -2,12 +2,10 @@ generated: '2026-07-19'
 method: derived
 status: candidate
 source: graphql/fragment-schema.graphql
-note: >-
-  Fragment markets MCP-style AI-agent access to the ledger, but no official
-  hosted/remote MCP server endpoint or MCP package was published on the docs,
-  npm (@modelcontextprotocol), or the fragment-dev GitHub org at capture time.
-  The tool list below is a CANDIDATE mapping of Fragment GraphQL operations to
-  MCP tools — a governance starting point, not a provider claim.
+note: Fragment markets MCP-style AI-agent access to the ledger, but no official hosted/remote MCP server
+  endpoint or MCP package was published on the docs, npm (@modelcontextprotocol), or the fragment-dev
+  GitHub org at capture time. The tool list below is a CANDIDATE mapping of Fragment GraphQL operations
+  to MCP tools — a governance starting point, not a provider claim.
 server:
   name: fragment
   transport: http
@@ -40,3 +38,9 @@ tools:
 - name: get_tx
   description: Read an external transaction.
   source_operation: graphql/fragment-schema.graphql#tx
+deployment:
+  mode: none
+  verified: derived
+  tools: 9
+  checked: '2026-08-12'
+  source: catalog MCP census
