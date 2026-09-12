@@ -101,6 +101,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Website
+  url: https://fragment.dev/
 - type: DeveloperPortal
   url: https://fragment.dev/docs
 - type: Documentation
